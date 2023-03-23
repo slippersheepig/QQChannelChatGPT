@@ -3,4 +3,4 @@ openai
 qq-botpy
 baidu-aip
 chardet
-revChatGPT
+revChatGPT==4.0.4
