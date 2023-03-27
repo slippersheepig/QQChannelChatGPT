@@ -4,3 +4,4 @@ qq-botpy
 baidu-aip
 chardet
 revChatGPT
+EdgeGPT
