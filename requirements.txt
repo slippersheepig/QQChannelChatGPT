@@ -7,3 +7,4 @@ revChatGPT
 EdgeGPT
 Pillow
 GitPython
+git+https://github.com/Lxns-Network/nakuru-project.git
