@@ -1,5 +1,5 @@
 from model.provider.provider import Provider
-from EdgeGPT import Chatbot, ConversationStyle
+from EdgeGPT import Chatbot
 import json
 
 class ProviderRevEdgeGPT(Provider):
@@ -30,7 +30,7 @@ class ProviderRevEdgeGPT(Provider):
         
         while err_count < retry_count:
             try:
-                resp = await self.bot.ask(prompt=prompt, conversation_style=ConversationStyle.creative)
+                resp = await self.bot.ask(prompt=prompt)
                 # print("[RevEdgeGPT] "+str(resp))
                 reply_msg = resp['item']['messages'][len(resp['item']['messages'])-1]['text']
                 if 'throttling' in resp['item']:
