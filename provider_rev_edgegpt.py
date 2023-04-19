@@ -32,7 +32,12 @@ class ProviderRevEdgeGPT(Provider):
             try:
                 resp = await self.bot.ask(prompt=prompt)
                 # print("[RevEdgeGPT] "+str(resp))
-                reply_msg = resp['item']['messages'][len(resp['item']['messages'])-1]['text']
+                msj_obj = resp['item']['messages'][len(resp['item']['messages'])-1]
+                reply_msg = msj_obj['text']
+                if 'sourceAttributions' in msj_obj:
+                    reply_source = msj_obj['sourceAttributions']
+                else:
+                    reply_source = []
                 if 'throttling' in resp['item']:
                     throttling = resp['item']['throttling']
                     # print(throttling)
@@ -46,8 +51,18 @@ class ProviderRevEdgeGPT(Provider):
                     await self.forget()
                     err_count += 1
                     continue
+                if reply_msg is None:
+                    # 不想答复
+                    return '', 0
+                else:
+                    index = 1
+                    if len(reply_source) > 0:
+                        reply_msg += "\n\n信息来源:\n"
+                    for i in reply_source:
+                        reply_msg += f"[{str(index)}]: {i['seeMoreUrl']} | {i['providerDisplayName']}\n"
+                        index += 1
                 if throttling is not None:
-                    reply_msg += f"⌈\n{throttling['numUserMessagesInConversation']}/{throttling['maxNumUserMessagesInConversation']}⌋"
+                    reply_msg += f"\n⌈{throttling['numUserMessagesInConversation']}/{throttling['maxNumUserMessagesInConversation']}⌋"
                 break
             except BaseException as e:
                 # raise e
