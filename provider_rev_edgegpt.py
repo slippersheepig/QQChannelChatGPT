@@ -49,7 +49,7 @@ class ProviderRevEdgeGPT(Provider):
                     err_count += 1
                     continue
                 if throttling is not None:
-                    reply_msg += f"⌈\n{throttling['numUserMessagesInConversation']}/{throttling['maxNumUserMessagesInConversation']}⌋"
+                    reply_msg += f"\n⌈{throttling['numUserMessagesInConversation']}/{throttling['maxNumUserMessagesInConversation']}⌋"
                 break
             except BaseException as e:
                 # raise e
