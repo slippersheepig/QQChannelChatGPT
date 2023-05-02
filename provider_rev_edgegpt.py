@@ -4,7 +4,7 @@ import json
 import os
 
 class ProviderRevEdgeGPT(Provider):
-    def __init__(self):
+    async def __init__(self):
         self.busy = False
         self.wait_stack = []
         with open('./cookies.json', 'r') as f:
