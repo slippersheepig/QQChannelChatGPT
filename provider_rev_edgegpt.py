@@ -7,8 +7,6 @@ class ProviderRevEdgeGPT(Provider):
     def __init__(self):
         self.busy = False
         self.wait_stack = []
-        with open('./cookies.json', 'r') as f:
-            cookies = json.load(f)
 
     def is_busy(self):
         return self.busy
@@ -21,6 +19,8 @@ class ProviderRevEdgeGPT(Provider):
             return False
         
     async def text_chat(self, prompt, platform = 'none'):
+        with open('./cookies.json', 'r') as f:
+            cookies = json.load(f)
         self.bot = await Chatbot.create(cookies=cookies)
         if self.busy:
              return
