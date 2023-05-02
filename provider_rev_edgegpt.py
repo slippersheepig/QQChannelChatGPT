@@ -9,7 +9,7 @@ class ProviderRevEdgeGPT(Provider):
         self.wait_stack = []
         with open('./cookies.json', 'r') as f:
             cookies = json.load(f)
-        self.bot = Chatbot.create(cookies=cookies)
+        self.bot = await Chatbot.create(cookies=cookies)
 
     def is_busy(self):
         return self.busy
