@@ -4,7 +4,7 @@ qq-botpy
 baidu-aip
 chardet
 revChatGPT==5.2.0
-EdgeGPT==0.7.0
+EdgeGPT==0.6.11
 Pillow
 GitPython
 git+https://github.com/Lxns-Network/nakuru-project.git
