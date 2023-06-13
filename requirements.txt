@@ -7,4 +7,4 @@ revChatGPT==5.2.0
 EdgeGPT==0.8.2
 Pillow
 GitPython
-git+https://github.com/Lxns-Network/nakuru-project.git
+nakuru-project
